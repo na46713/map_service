@@ -28,9 +28,9 @@
       }
       
       map.on('locationfound',onLocationFound);
-      mymap.on('locationerror', onLocationError);
+      map.on('locationerror', onLocationError);
 
-      mymap.locate({setView: true, maxZoom: 16, timeout: 20000});
+      map.locate({setView: true, maxZoom: 16, timeout: 20000});
       
       </script>
     
