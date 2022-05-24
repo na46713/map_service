@@ -3,17 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>マップサービス</title>
+    <style type="text/css">
+     <!--
+      #btnCurLocation { height:50px; width: 150px;}
+    -->
+    </style>
   </head>
   <body>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
 
-    以下にmapを表示します
-
+    <button id ="btnCurlocation" onClick="setCurLocation()">現在地を表示する</button>
     <div id="map" style="margin: auto; width: 80%; height: 900px; border: solid 2px;"></div>
 
     <script>
-      var map = L.map('map');
+      var map = L.map('map').setView([35.686878629251815, 139.75260209089285],15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 	  maxZoom: 18;
 	  attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
