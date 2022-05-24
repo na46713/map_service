@@ -18,19 +18,26 @@
 	  maxZoom: 18;
 	  attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
       }).addTo(map);
-	    
-      function onLocationFound(e) {
-	  L.marker(e.latlng).addTo(map).bindPopup("現在地").openPopup();
+
+      function setCurLocation(){
+	  if (navigator.geolocation == false){
+	      alert('現在地を取得できませんでした．');
+              return;
       }
 
-      function onLocationError(e) {
-          alert("現在地を取得できませんでした。" + e.message);
+	  function success(e){
+	      var lat  = e.coords.latitude;
+              var lng = e.coords.longitude;
+              map.setView([lat, lng], 15);
+              L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
       }
       
-      map.on('locationfound',onLocationFound);
-      map.on('locationerror', onLocationError);
+	  function error(){
+	      alert('現在地を取得できませんでした．');
+	  };
 
-      map.locate({setView: true, maxZoom: 16, timeout: 20000});
+	  navigator.geolocation.getCurrentPosition(success,error);
+      }
       
       </script>
     
