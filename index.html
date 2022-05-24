@@ -18,11 +18,9 @@
 	  maxZoom: 18;
 	  attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
       }).addTo(map);
-
-      L.marker([39.772513474328925, 140.080095984655]).addTo(map);
-
+	    
       function onLocationFound(e) {
-	  L.market(e.latlng).addTo(map).bindPopup("現在地").openPopup();
+	  L.marker(e.latlng).addTo(map).bindPopup("現在地").openPopup();
       }
 
       function onLocationError(e) {
