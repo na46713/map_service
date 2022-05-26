@@ -12,12 +12,12 @@
   <body>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-
+    
+    <div id="mapid" style="margin: auto; width: 80%; height: 900px; border: solid 2px;"></div>
     <button id ="btnCurlocation" onClick="setCurLocation()">現在地を表示する</button>
-    <div id="map" style="margin: auto; width: 80%; height: 900px; border: solid 2px;"></div>
-
+    
     <script>
-      var map = L.map('map').setView([35.686878629251815, 139.75260209089285],15);
+      var map = L.map('mapid').setView([35.686878629251815, 139.75260209089285],15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 	  maxZoom: 18;
 	  attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
@@ -27,7 +27,10 @@
 	  if (navigator.geolocation == false){
 	      alert('現在地を取得できませんでした．');
               return;
-      }
+      } else {
+            var errorMessage = "お使いの端末は、GeoLacation APIに対応していません。" ;
+            alert(errorMessage);
+        }
 
 	  function success(e){
 	      var lat  = e.coords.latitude;
